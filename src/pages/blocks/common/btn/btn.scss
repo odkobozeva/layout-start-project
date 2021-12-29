@@ -1,0 +1,123 @@
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+    font-family: inherit;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.3s, border 0.3s, color 0.3s;
+
+    &--primary {
+        color: $white;
+        background-color: $blue;
+        border: 1px solid transparent;
+        border-radius: 2px;
+
+        &:hover {
+            color: $blue;
+            border-color: $blue;
+            background-color: transparent;
+        }
+    }
+
+    &--secondary {
+        color: $white;
+        background-color: $gray;
+        border: 1px solid transparent;
+        border-radius: 2px;
+
+        &:hover {
+            color: $gray;
+            border-color: $gray;
+            background-color: transparent;
+        }
+    }
+
+    &--success {
+        color: $white;
+        background-color: $green;
+        border: 1px solid transparent;
+        border-radius: 2px;
+
+        &:hover {
+            color: $green;
+            border-color: $green;
+            background-color: transparent;
+        }
+    }
+
+    &--danger {
+        color: $white;
+        background-color: $yellow;
+        border: 1px solid transparent;
+        border-radius: 2px;
+
+        &:hover {
+            color: $yellow;
+            border-color: $yellow;
+            background-color: transparent;
+        }
+    }
+
+    &--warning {
+        color: $white;
+        background-color: $red;
+        border: 1px solid transparent;
+        border-radius: 2px;
+
+        &:hover {
+            color: $red;
+            border-color: $red;
+            background-color: transparent;
+        }
+    }
+
+    &--info {
+        color: $black;
+        background-color: $lightblue;
+        border: 1px solid transparent;
+        border-radius: 2px;
+
+        &:hover {
+            border-color: $lightblue;
+            background-color: transparent;
+        }
+    }
+
+    &--light {
+        color: $black;
+        background-color: $lightgray;
+        border: 1px solid transparent;
+        border-radius: 2px;
+
+        &:hover {
+            border-color: $lightgray;
+            background-color: transparent;
+        }
+    }
+
+    &--dark {
+        color: $white;
+        background-color: $black;
+        border: 1px solid transparent;
+        border-radius: 2px;
+
+        &:hover {
+            color: $black;
+            border-color: $black;
+            background-color: transparent;
+        }
+    }
+
+    &--link {
+        padding: 0;
+        color: $black;
+        text-decoration: underline;
+
+        &:hover {
+            color: rgba($black, 0.6);
+        }
+    }
+}

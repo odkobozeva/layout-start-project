@@ -1,0 +1,32 @@
+.social {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__link-wrap {
+        background-color: $lightgray;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    &__link-wrap:not(:last-child) {
+        margin-right: 10px;
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+
+        &:hover {
+            .social__icon {
+                fill: rgba($black, 0.6);
+            }
+        }
+    }
+
+    &__icon {
+        fill: $black;
+        transition: fill 0.3s;
+    }
+}

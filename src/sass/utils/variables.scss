@@ -1,0 +1,77 @@
+$black: #000000;
+$gray: #808080;
+$lightgray: #d3d3d3;
+$white: #ffffff;
+$green: #24ac80;
+$red: #ef4f46;
+$blue: #2951e3;
+$lightblue: #add8e6;
+$yellow: #ffbb36;
+
+$custom-scroll-bg: $gray;
+$custom-scroll: $white;
+
+$font-family: "Roboto", -apple-system, blinkmacsystemfont, "Roboto", "Ubuntu", "Droid Sans", "Helvetica Neue", "Arial", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+// Viewports
+$media-up--XXS: 377px;
+$media-up--XS : 577px;
+$media-up--S  : 768px;
+$media-up--M  : 901px;
+$media-up--L  : 1025px;
+$media-up--XL : 1280px;
+$media-up--XXL : 1900px;
+
+
+//media
+@mixin media-up--XS {
+    @media screen and (min-width: $media-up--XS) {
+        @content;
+    }
+}
+
+@mixin media-up--S {
+    @media screen and (min-width: $media-up--S) {
+        @content;
+    }
+}
+
+@mixin media-up--M {
+    @media screen and (min-width: $media-up--M) {
+        @content;
+    }
+}
+
+@mixin media-up--L {
+    @media screen and (min-width: $media-up--L) {
+        @content;
+    }
+}
+
+@mixin media-up--XL {
+    @media screen and (min-width: $media-up--XL) {
+        @content;
+    }
+}
+
+@mixin media-up--XXL {
+    @media screen and (min-width: $media-up--XXL) {
+        @content;
+    }
+}
+
+
+// font-size
+// Вызов @include fluid-type(28px, 60px, 420px, 1024px);
+// @mixin fluid-type($min-font-size: 12px, $max-font-size: 21px, $lower-range: 420px, $upper-range: 900px) {
+
+//     font-size: calc(#{$min-font-size} + #{(($max-font-size / ($max-font-size * 0 + 1)) - ($min-font-size / ($min-font-size * 0 + 1)))} * ( (100vw - #{$lower-range}) / #{(($upper-range / ($upper-range * 0 + 1)) - ($lower-range / ($lower-range * 0 + 1)))}));
+
+//     @media screen and (max-width: $lower-range) {
+//         font-size: $min-font-size;
+//     }
+
+//     @media screen and (min-width: $upper-range) {
+//         font-size: $max-font-size;
+//     }
+// }

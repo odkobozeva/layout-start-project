@@ -1,0 +1,580 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png")
+        title Preview Page
+        style.
+            #devices * {
+                font-family: "PT Sans", "Arial", sans-serif;
+                box-sizing: border-box;
+            }
+            #devices p {
+                margin: 0;
+                font-size: 12px;
+                line-height: 1.2;
+            }
+            #devices .box {
+                max-width: 1200px;
+                width: calc(100% - 40px);
+                margin: 0 auto;
+            }
+            #devices .check-button {
+                padding: 5px 15px;
+                border: 1px solid transparent;
+                border-radius: 15px;
+                background: #b8d9e4;
+                transition: 0.3s;
+                cursor: pointer;
+            }
+            #devices .check-button:hover {
+                background: #81b4c5;
+            }
+            #devices .rotate-button {
+                margin-left: 20px;
+                padding: 5px 10px;
+                border: 1px solid transparent;
+                border-radius: 15px;
+                background: #b8d9e4;
+                transition: 0.3s;
+                cursor: pointer;
+            }
+            #devices .rotate-button:hover {
+                background: #81b4c5;
+            }
+            #devices .list {
+                display: grid;
+                border: 2px solid #edf2f7;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            #devices .list-item {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                gap: 10px;
+                padding: 0 10px;
+                border-top: 2px solid #edf2f7;
+                transition: background 0.3s;
+            }
+            #devices .list-item.active {
+                background-color: #f8f9fb;
+            }
+            #devices .list-item.active > .check-button {
+                background-color: #e3e3e3;
+                pointer-events: none;
+            }
+            #devices .list-head {
+                display: grid;
+                grid-template-columns: 1fr 1fr auto;
+                align-items: center;
+                gap: 10px;
+                padding: 10px;
+                font-weight: bold;
+            }
+            #devices .list-item:hover {
+                background-color: #edf2f7;
+            }
+            #devices .list-link-wrap {
+                display: grid;
+                gap: 20px;
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                justify-items: flex-start;
+            }
+            #devices .list-link {
+                display: inline-block;
+                gap: 10px;
+                padding: 10px 0;
+                font-size: 14px;
+                text-decoration: none;
+                color: black;
+                text-decoration: underline;
+                transition: color 0.3s;
+            }
+            #devices .list-link:hover {
+                color: #3c8eaa;
+            }
+            #devices .devices-list {
+                margin-top: 40px;
+            }
+            #devices .device {
+                position: relative;
+                padding-bottom: 50px;
+                border-bottom: 2px solid #edf2f7;
+            }
+            #devices .device--laptop .device-body {
+                max-width: 80%;
+                border-bottom-width: 20px;
+                border-radius: 10px 10px 0 0;
+            }
+            #devices .device--mobile {
+                display: grid;
+                grid-template-rows: auto 1fr;
+                align-items: center;
+            }
+            #devices .device-title {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-size: 16px;
+            }
+            #devices .device-body {
+                width: 100%;
+                display: flex;
+                justify-content: space-evenly;
+                position: relative;
+                border: 10px solid black;
+                border-radius: 10px;
+                margin: 0 auto;
+            }
+            #devices .device-position {
+                position: absolute;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity 0.5s;
+            }
+            #devices .device-position--active {
+                position: relative;
+                opacity: 1;
+                visibility: visible;
+            }
+            #devices .body-mobile {
+                border-width: 80px 15px;
+                border-radius: 20px;
+            }
+            #devices .body-mobile-landscape {
+                border-width: 40px 15px;
+            }
+            #devices .body-mobile-portrait {
+                border-width: 10px 22px;
+            }
+            #devices .device-foot {
+                width: 20%;
+                padding-bottom: 10%;
+                background: url("../img/desktop-foot.png") top / contain no-repeat;
+                margin: 0 auto;
+            }
+            #devices .device-foot-laptop {
+                width: 100%;
+                padding-bottom: 5%;
+                background: url("../img/laptop-foot.png") top / contain no-repeat;
+                margin: 0 auto;
+            }
+            #devices .frame {
+                position: relative;
+                overflow: hidden;
+            }
+            #devices .frame iframe {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                transform-origin: 0 0;
+            }
+            #devices .frame.desktop {
+                width: 100%;
+                padding-bottom: 56.25%;
+            }
+            #devices .frame.desktop iframe {
+                width: 1920px;
+                height: 1080px;
+            }
+            #devices .frame.ultrawide {
+                width: 100%;
+                padding-bottom: 42.18%;
+            }
+            #devices .frame.ultrawide iframe {
+                width: 2560px;
+                height: 1080px;
+            }
+            #devices .frame.macAir {
+                width: 100%;
+                padding-bottom: 62.5%;
+            }
+            #devices .frame.macAir iframe {
+                width: 1280px;
+                height: 800px;
+            }
+            #devices .frame.macAirS {
+                width: 100%;
+                padding-bottom: 62.5%;
+            }
+            #devices .frame.macAirS iframe {
+                width: 1440px;
+                height: 900px;
+            }
+            #devices .frame.ipadProLandscape {
+                width: 100%;
+                padding-bottom: 74.96339%;
+            }
+            #devices .frame.ipadProLandscape iframe {
+                width: 1366px;
+                height: 1024px;
+            }
+            #devices .frame.ipadProPortrait {
+                width: 100%;
+                padding-bottom: 133.39843%;
+            }
+            #devices .frame.ipadProPortrait iframe {
+                width: 1024px;
+                height: 1366px;
+            }
+            #devices .frame.ipadLandscape {
+                width: 100%;
+                padding-bottom: 75%;
+            }
+            #devices .frame.ipadLandscape iframe {
+                width: 1024px;
+                height: 768px;
+            }
+            #devices .frame.ipadPortrait {
+                width: 100%;
+                padding-bottom: 133.33333%;
+            }
+            #devices .frame.ipadPortrait iframe {
+                width: 768px;
+                height: 1024px;
+            }
+            #devices .frame.iphone5 {
+                width: 100%;
+                padding-bottom: 172.12121%;
+            }
+            #devices .frame.iphone5 iframe {
+                width: 330px;
+                height: 568px;
+            }
+            #devices .frame.iphone5Landscape {
+                width: 100%;
+                padding-bottom: 56.33802%;
+            }
+            #devices .frame.iphone5Landscape iframe {
+                width: 568px;
+                height: 320px;
+            }
+            #devices .frame.iphone8 {
+                width: 100%;
+                padding-bottom: 180.53333%;
+            }
+            #devices .frame.iphone8 iframe {
+                width: 375px;
+                height: 677px;
+            }
+            #devices .frame.iphone8Landscape {
+                width: 100%;
+                padding-bottom: 55.39143%;
+            }
+            #devices .frame.iphone8Landscape iframe {
+                width: 677px;
+                height: 375px;
+            }
+            #devices .frame.iphoneX {
+                width: 100%;
+                padding-bottom: 216.53333%;
+            }
+            #devices .frame.iphoneX iframe {
+                width: 375px;
+                height: 812px;
+            }
+            #devices .frame.iphoneXLandscape {
+                width: 100%;
+                padding-bottom: 46.18226%;
+            }
+            #devices .frame.iphoneXLandscape iframe {
+                width: 812px;
+                height: 375px;
+            }
+            #devices .frame.iphoneXR {
+                width: 100%;
+                padding-bottom: 216.42512%;
+            }
+            #devices .frame.iphoneXR iframe {
+                width: 414px;
+                height: 896px;
+            }
+            #devices .frame.iphoneXRLandscape {
+                width: 100%;
+                padding-bottom: 46.20535%;
+            }
+            #devices .frame.iphoneXRLandscape iframe {
+                width: 896px;
+                height: 414px;
+            }
+            #devices .frame.iphone12 {
+                width: 100%;
+                padding-bottom: 216.41025%;
+            }
+            #devices .frame.iphone12 iframe {
+                width: 390px;
+                height: 844px;
+            }
+            #devices .frame.iphone12Landscape {
+                width: 100%;
+                padding-bottom: 46.20853%;
+            }
+            #devices .frame.iphone12Landscape iframe {
+                width: 844px;
+                height: 390px;
+            }
+            @media (min-width: 767px) {
+                #devices p {
+                    font-size: 16px;
+                }
+                #devices .list-item {
+                    grid-template-columns: 1fr minmax(150px, auto);
+                }
+                #devices .list-link {
+                    font-size: 16px;
+                }
+                #devices .device-title {
+                    font-size: 24px;
+                }
+                #devices .device--mobile {
+                    min-height: 80vh;
+                    display: grid;
+                    grid-template-rows: auto 1fr;
+                    align-items: center;
+                }
+                #devices .device-body {
+                    border-width: 15px;
+                }
+                #devices .body-mobile-portrait {
+                    border-width: 15px 50px;
+                }
+                #devices .body-mobile-landscape {
+                    border-width: 50px 15px;
+                }
+            }
+
+    body
+        <svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 0; height: 0; clip: rect(0 0 0 0);">
+        <defs>
+            <symbol id="rotate-icon" viewBox="0 0 24 24">
+            <path d="M16.5,2.5 C19.8,4 22.1,7.2 22.5,11 L24,11 C23.4,4.8 18.3,0 12,0 L11.3,0 L15.1,3.8 L16.5,2.5 L16.5,2.5 Z M10.2,1.7 C9.6,1.1 8.7,1.1 8.1,1.7 L1.7,8.1 C1.1,8.7 1.1,9.6 1.7,10.2 L13.7,22.2 C14.3,22.8 15.2,22.8 15.8,22.2 L22.2,15.8 C22.8,15.2 22.8,14.3 22.2,13.7 L10.2,1.7 L10.2,1.7 Z M14.8,21.2 L2.8,9.2 L9.2,2.8 L21.2,14.8 L14.8,21.2 L14.8,21.2 Z M7.5,21.5 C4.2,20 1.9,16.8 1.5,13 L0.1,13 C0.6,19.2 5.7,24 12,24 L12.7,24 L8.9,20.2 L7.5,21.5 L7.5,21.5 Z"></path>
+            </symbol>
+        </defs>
+        </svg>
+        main
+            section#devices
+                .box
+                    .list
+                        .list-head
+                            p Page
+                            p URL
+                            p Check Responsive
+                        .list-item.active
+                            .list-link-wrap
+                                a.list-link(href="https://sud.codegrdn.com/index.html" target="_blank") Home
+                                p /index
+                            button.check-button(type="button" data-src="https://sud.codegrdn.com/index.html") check
+
+
+
+                    .devices-list
+                        .device
+                            h2.device-title 16:9 ( 1920x1080) — Desktop 27"
+                            .device-body
+                                .frame.frame-desktop.desktop
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+                            .device-foot
+
+                        .device
+                            h2.device-title 21:9 ( 2560x1080 ) — Ultrawide Desktop
+                            .device-body
+                                .frame.frame-desktop.ultrawide
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+                            .device-foot
+
+                        .device.device--laptop
+                            h2.device-title 16:10 ( 1280x800 ) — Apple MacBook Air
+                            .device-body
+                                .frame.frame-desktop.macAir
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+                            .device-foot-laptop
+
+                        .device.device--laptop
+                            h2.device-title 16:10 ( 1440x900 ) — Apple MacBook Air (2017)
+                            .device-body
+                                .frame.frame-desktop.macAirS
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+                            .device-foot-laptop
+
+                        .device.device--mobile
+                            h2.device-title 1366x1024 — Ipad Pro
+                                | <button class="rotate-button" type="button">
+                                |    <svg class="social__icon" width="20" height="20">
+                                |    <use xlink:href="#rotate-icon"></use>
+                                |    </svg>
+                                | </button>
+                            .device-body.device-position.device-position--active(style="max-width: 800px;")
+                                .frame.ipadProLandscape
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+
+                            .device-body.device-position(style="max-width: 600px;")
+                                .frame.ipadProPortrait
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+                        .device.device--mobile
+                            h2.device-title ( 1024x768 ) — Ipad
+                                | <button class="rotate-button" type="button">
+                                |    <svg class="social__icon" width="20" height="20">
+                                |    <use xlink:href="#rotate-icon"></use>
+                                |    </svg>
+                                | </button>
+                            .device-body.device-position.device-position--active(style="max-width: 800px;")
+                                .frame.ipadLandscape
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+                            .device-body.device-position(style="max-width: 600px;")
+                                .frame.ipadPortrait
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+                        .device.device--mobile
+                            h2.device-title ( 390x844 ) — iPhone 12
+                                | <button class="rotate-button" type="button">
+                                |    <svg class="social__icon" width="20" height="20">
+                                |    <use xlink:href="#rotate-icon"></use>
+                                |    </svg>
+                                | </button>
+                            .device-body.device-position.device-position--active.body-mobile.body-mobile-landscape(style="max-width: 300px;")
+                                .frame.iphone12
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+                            .device-body.device-position.body-mobile.body-mobile-portrait(style="max-width: 745px;")
+                                .frame.iphone12Landscape
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+
+                        .device.device--mobile
+                            h2.device-title ( 414x896 ) — iPhone XR, XS Max
+                                | <button class="rotate-button" type="button">
+                                |    <svg class="social__icon" width="20" height="20">
+                                |    <use xlink:href="#rotate-icon"></use>
+                                |    </svg>
+                                | </button>
+                            .device-body.device-position.device-position--active.body-mobile.body-mobile-landscape(style="max-width: 300px;")
+                                .frame.iphoneXR
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+                            .device-body.device-position.body-mobile.body-mobile-portrait(style="max-width: 745px;")
+                                .frame.iphoneXRLandscape
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+
+                        .device.device--mobile
+                            h2.device-title ( 375x812 ) — IPhone X, XS
+                                | <button class="rotate-button" type="button">
+                                |    <svg class="social__icon" width="20" height="20">
+                                |    <use xlink:href="#rotate-icon"></use>
+                                |    </svg>
+                                | </button>
+                            .device-body.device-position.device-position--active.body-mobile.body-mobile-landscape(style="max-width: 300px;")
+                                .frame.iphoneX
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+                            .device-body.device-position.body-mobile.body-mobile-portrait(style="max-width: 745px;")
+                                .frame.iphoneXLandscape
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+
+                        .device.device--mobile
+                            h2.device-title ( 375x667 ) — IPhone 8, 7, 6/6S
+                                | <button class="rotate-button" type="button">
+                                |    <svg class="social__icon" width="20" height="20">
+                                |    <use xlink:href="#rotate-icon"></use>
+                                |    </svg>
+                                | </button>
+                            .device-body.device-position.device-position--active.body-mobile.body-mobile-landscape(style="max-width: 375px;")
+                                .frame.iphone8
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+                            .device-body.device-position.body-mobile.body-mobile-portrait(style="max-width: 782px;")
+                                .frame.iphone8Landscape
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+                        .device.device--mobile
+                            h2.device-title ( 320x568 ) — IPhone 5
+                                | <button class="rotate-button" type="button">
+                                |    <svg class="social__icon" width="20" height="20">
+                                |    <use xlink:href="#rotate-icon"></use>
+                                |    </svg>
+                                | </button>
+                            .device-body.device-position.device-position--active.body-mobile.body-mobile-landscape(style="max-width: 350px;")
+                                .frame.iphone5
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+                            .device-body.device-position.body-mobile.body-mobile-portrait(style="max-width: 728px;")
+                                .frame.iphone5Landscape
+                                    iframe(src="https://sud.codegrdn.com/" height="100%" width="100%" frameborder="0" loading="lazy")
+
+
+
+        script.
+            let checkButtons = document.querySelectorAll('.check-button');
+            let iframe = document.querySelectorAll('iframe');
+            let scale = 1;
+
+            changeIframeSrc = (src) => {
+                iframe.forEach(function(elem) {
+                    elem.src = src;
+                });
+            };
+
+            checkButtons.forEach(function(elem) {
+                elem.onclick = function() {
+                    document.querySelector(".list-item.active").classList.remove("active");
+                    let newSrc = elem.dataset.src;
+                    changeIframeSrc(newSrc);
+                    elem.closest(".list-item").classList.add("active")
+                };
+            });
+
+            let getScrollSize = function () {
+                const outer = document.createElement('div');
+                const inner = document.createElement('div');
+                outer.style.overflow = 'scroll';
+                outer.classList.add('scrollbar');
+                document.body.appendChild(outer);
+                outer.appendChild(inner);
+                const scrollbarSize = outer.offsetWidth - inner.offsetWidth;
+                document.body.removeChild(outer);
+                return scrollbarSize;
+            };
+
+            iframeScale = () => {
+                let frame = document.querySelectorAll('.frame');
+                frame.forEach(function(frame) {
+                    let iframe = frame.querySelector('iframe');
+                    if ( frame.classList.contains('frame-desktop')) {
+                        scale = frame.offsetWidth / iframe.offsetWidth;
+                    } else {
+                        scale = frame.offsetWidth  / (iframe.offsetWidth - getScrollSize());
+                    }
+
+                    iframe.style.transform = `scale(${scale})`;
+                });
+            }
+
+            let rotateBtn = document.querySelectorAll('.rotate-button');
+
+            rotateBtn.forEach(function(btn) {
+                btn.onclick = function() {
+                    let devicePosition = btn.closest('.device').querySelectorAll(".device-position");
+
+                    devicePosition.forEach(function(elem) {
+                        elem.classList.toggle("device-position--active");
+                            iframeScale();
+                    });
+                };
+            });
+
+
+            iframeScale();
+
+            window.addEventListener('resize', function(){
+                iframeScale();
+            });

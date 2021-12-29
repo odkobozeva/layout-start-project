@@ -1,0 +1,65 @@
+extends utils/layout.pug
+
+block meta
+    title Home page
+    meta(name='description', content='')
+
+block head
+    link(rel='stylesheet', href='css/index-style.min.css?v-@@VERSION')
+
+
+block content
+    main.page-main
+        section.content
+            .box
+                div(style="font-family: 'Montserrat'")
+                    h2 font-family: 'Montserrat'
+                    p(style="font-weight: 300") 300 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 300") 300 - absdefghijklmnopqrstuvwxyz
+                    p(style="font-weight: 300") 300 - 0123456789!?@$%^&*
+                    p(style="font-weight: 400") 400 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 500") 500 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 700") 700 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                <br>
+                div(style="font-family: 'Open Sans'")
+                    h2 font-family: 'Open Sans'
+                    p(style="font-weight: 300") 300 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 400") 400 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 500") 500 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 700") 700 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                <br>
+                div(style="font-family: 'Inter'")
+                    h2 font-family: 'Inter'
+                    p(style="font-weight: 300") 300 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 400") 400 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 500") 500 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 700") 700 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                <br>
+                div(style="font-family: 'Libre Baskerville'")
+                    h2 font-family: 'Libre Baskerville'
+                    p(style="font-weight: 300") 300 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 400") 400 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 500") 500 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 700") 700 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                <br>
+                div(style="font-family: 'Roboto'")
+                    h2 font-family: 'Roboto'
+                    p(style="font-weight: 300") 300 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 400") 400 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 500") 500 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 700") 700 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+                    p(style="font-weight: 900") 900 - ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!?@$%^&*
+
+                hr
+                button.btn.btn--primary(type='button') Primary
+                button.btn.btn--secondary(type='button') Secondary
+                button.btn.btn--success(type='button') Success
+                button.btn.btn--danger(type='button') Danger
+                button.btn.btn--warning(type='button') Warning
+                button.btn.btn--info(type='button') Info
+                button.btn.btn--light(type='button') Light
+                button.btn.btn--dark(type='button') Dark
+                button.btn.btn--link(type='button') Link
+
+                hr
+                include ./blocks/common/social/social.pug

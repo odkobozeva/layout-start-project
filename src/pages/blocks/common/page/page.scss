@@ -1,0 +1,147 @@
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    font-family: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    font-weight: inherit;
+}
+
+button,
+input {
+    outline: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+button {
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    font-family: inherit;
+}
+
+input[type="text"],
+textarea,
+input[type="email"] {
+    font-size: inherit;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.page {
+    height: 100%;
+    min-width: 320px;
+    margin: 0;
+    line-height: 1;
+    font-size: 14px;
+    font-family: $font-family;
+    word-break: break-word;
+    box-sizing: border-box;
+
+    &__body {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+}
+
+.page-main {
+    flex: 1 1 auto;
+}
+
+.box {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @include media-up--S {
+        padding: 0 30px;
+    }
+}
+
+.no-scroll {
+    overflow: hidden;
+
+    &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 10;
+    }
+}
+
+// Custom scrollbar
+.custom-scroll {
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+        background-color: rgba($custom-scroll-bg, 1);
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgba($custom-scroll-bg, 1);
+        border-radius: 999px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba($custom-scroll, 1);
+        border-radius: 999px;
+    }
+}
