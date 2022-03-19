@@ -12,6 +12,7 @@ module.exports = function styles() {
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass())
+    .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest("build/css"))
     .pipe(postcss([
         autoprefixer(),
