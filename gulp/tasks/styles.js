@@ -11,7 +11,6 @@ module.exports = function styles() {
   return gulp.src('src/sass/*.scss')
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(sass())
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest("build/css"))
     .pipe(postcss([
